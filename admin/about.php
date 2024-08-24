@@ -5,7 +5,7 @@
 <a class="add-new pull-right" href="add_about.php">Add New</a>
 <table class="table table-striped table-hover table-bordered">
     <?php 
-    $limit = 5;
+    $limit = 3;
     $db = new Database();
     $db->select('about','about.id,about.user_id,about.sort_desc,about.long_desc,about.profile,about.status,users.id,users.name',
     'users ON about.user_id = users.id',null,'about.id DESC',$limit);
@@ -67,6 +67,9 @@
     ?>
     
 </table>
+<div class="pagination-outer">
+    echo $db->pagination('about','',$limit);
+</div>
 </div>
 
 <?php include 'footer.php'; ?>
